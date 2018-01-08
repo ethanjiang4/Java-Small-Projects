@@ -1,0 +1,30 @@
+package ThreeSort;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ethan Jiang
+ * @date Jan 7 2018
+ * Takes in 3 integers and sorts them in ascending order.
+ */
+public class ThreeSort {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Enter three integers: ");
+        
+        int f = sc.nextInt();
+        int s = sc.nextInt();
+        int t = sc.nextInt();
+        
+        int third = (Math.max(s, Math.max(f, t)));
+        int first = (Math.min(s, Math.min(f, t)));
+        int second = f + s + t - first - third;
+        
+        System.out.println(first + " " + second + " " + third);
+    }
+}
