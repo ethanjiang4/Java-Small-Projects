@@ -1,0 +1,62 @@
+
+
+/**
+ *
+ * @author Ethan Jiang
+ * @date Jan. 9. 17
+ * */
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class RGBtoYIQ {
+
+    /**
+     * converts from RBG to YIQ or back.
+     * results limited to 3 decimal places.
+     * assumes valid RGB and YIQ values.
+     * @param args
+     */
+    public static void main(String[] args) {
+        Scanner sc;
+        sc = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("#.000");
+       
+        System.out.println("To convert from RGB to YIQ, enter 1.");
+        System.out.println("To convert from YIQ to RGB, enter 2.");
+        int input = sc.nextInt();
+        
+        if (input == 1){
+            System.out.println("Enter value for R: ");
+            double r = sc.nextInt();
+            System.out.println("Enter value for G: ");
+            double g = sc.nextInt();
+            System.out.println("Enter value for B: ");
+            double b = sc.nextInt();
+            
+            double y = 0.299*r + 0.587*g + 0.114*b;
+            double i = 0.596*r - 0.274*g - 0.322*b;
+            double q = 0.211*r - 0.523*g + 0.312*b;
+            System.out.println("Your YIQ value is: ");
+            System.out.println(df.format(y) + ", " + df.format(i)
+                    + ", " + df.format(q) + ".");
+            
+        } else if (input == 2){
+            System.out.println("Enter value for Y: ");
+            double y = sc.nextInt();
+            System.out.println("Enter value for I: ");
+            double i = sc.nextInt();
+            System.out.println("Enter value for Q: ");
+            double q = sc.nextInt();
+            
+            double r = y + 0.956*i + 0.621*q;
+            double g = y - 0.272*i - 0.647*q;
+            double b = y - 1.106*i + 1.703*q;
+            System.out.println("Your RGB value is: ");
+            System.out.println(df.format(r) + ", " + df.format(g) 
+                    + ", " + df.format(b) + ".");
+        }
+               
+    }
+    
+    
+}
