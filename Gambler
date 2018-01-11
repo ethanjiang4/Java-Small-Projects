@@ -1,0 +1,52 @@
+import java.util.Scanner;
+import java.util.Random;
+
+/**
+ *
+ * @author Ethan
+ * @date Jan.10.17
+ */
+public class Gambler {
+
+    /**
+     * @param args the command line arguments
+     * This program will simulate a gambler, starting with an initial stake.
+     * It will also take a goal target (e.g. $100) and will simulate 1$ bets
+     * until the gambler wins or loses (0).
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random rand = new Random();
+        int count;
+        
+        System.out.println("Enter initial stake ($): ");
+        int stake = sc.nextInt();
+        
+        System.out.println("Enter target goal: ");
+        int goal = sc.nextInt();
+        
+        System.out.println("Enter number of times to run simulation: ");
+        int n = sc.nextInt();
+        
+        while(n > 0){
+            count = 0;
+            int money = stake;
+            
+            while(money != 0 && money != goal){
+                int flip = rand.nextInt(2);
+                if (flip == 0){
+                    money--;
+                } else {
+                    money++;
+                }
+                count++;
+            }
+            
+            System.out.println("Test " + ((n + 1) - n) + ": ");
+            System.out.println("Result: " + money);
+            System.out.println("Iterations: " + count);
+            n--;
+        }
+    }
+    
+}
