@@ -1,0 +1,33 @@
+/**
+ *
+ * @author Ethan
+ * @date Jan 14. 2017
+ */
+public class RandomCard {
+
+    /**
+     * @param args the command line arguments
+     * Random card selector.
+     */
+    public static void main(String[] args) {
+      String[] suits = {"Diamonds", "Clubs", "Hearts", "Spades"};
+      String[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10",
+              "Jack", "Queen", "King", "Ace"};
+      int jokerpicker = (int) (Math.random() * 26); //joker has 1/26 chance
+      String card;
+      
+      int randomsuit = (int) (Math.random() * suits.length);
+      int randomvalue = (int) (Math.random() * values.length);
+      
+      if (jokerpicker == 0){
+           card = "The Joker";
+      } else {
+        card = values[randomvalue] + " of " + suits[randomsuit];
+      }
+      
+      System.out.println("Your card: ");
+      System.out.println(card);
+      
+    }
+    
+}
