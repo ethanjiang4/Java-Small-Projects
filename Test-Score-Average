@@ -1,0 +1,34 @@
+import java.util.*;
+
+//Project made in AP Computer Science
+
+class TestScoreAverageCalculator {
+   
+   public static void main(String[] args) {
+      
+      Scanner scanner = new Scanner(System.in);
+      int count = 0; //counts the amount of data entered
+      double score = 0, sum = 0;
+      boolean done = false; //loop flag
+      
+      System.out.println("Enter -1 to end. \n");
+      
+      while (true){
+         
+         System.out.print("Enter score: ");
+         score = scanner.nextDouble(); //user enters next score
+         
+         if (score == -1) break; //data entry is complete
+         
+         sum += score;  //adds score to sum
+         count++;       //increments count
+         
+         
+      }
+      
+      if (count != 0)
+         System.out.println("\nThe average on this test is :" + sum/count);
+      else
+         System.out.println("\nNo data entered."); //output is user enters -1 immediately   
+   }
+}
