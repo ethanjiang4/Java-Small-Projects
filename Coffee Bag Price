@@ -1,0 +1,143 @@
+//Name: Ethan Jiang
+//Date: Nov. 15. 16
+//Purpose: A program that takes unit weight of a bag, bags sold, and displays price
+//Answer to #16 on page 219
+//File Name: Unit3ProjectPart2 and CoffeeBag
+//Course: 12 AP CompSci
+
+import java.util.*;
+import java.text.*;
+
+class Unit3ProjectPart2 {
+
+   public static void main(String[] args){
+   
+      //Variables 
+      double weight;
+      int bags;
+      
+      //declare scanners and decimalformat
+      
+      Scanner scanner = new Scanner(System.in);
+      
+      DecimalFormat df = new DecimalFormat("#.##"); //2 decimal places for price display
+      
+      DecimalFormat df2 = new DecimalFormat("#"); //one decimal place for weight display
+      
+      //taking input
+      
+      System.out.println("Enter the weight of the bag in lbs: ");
+      
+      weight = scanner.nextDouble();
+      
+      //declare CoffeeBag class with weight
+      CoffeeBag c = new CoffeeBag(weight);
+      
+      System.out.println("Enter the number of bags purchased: ");
+      
+      bags = scanner.nextInt();
+      
+      //displaying output
+      
+      System.out.println("Number of bags sold: " + bags);
+      
+      System.out.println("     " + "Weight per bag: " + df2.format(c.getWeight()) + " lb");
+      
+      System.out.println("    " + "Price per pound: " + "$" + c.getPrice());
+      
+      System.out.println("          " + "Sales tax: " + df.format(c.getSalesTax()*100) + "%" + "\n");
+      
+      System.out.println("        " + "Total price: " + "$" + df.format(c.findTotalPrice(bags)));
+      
+   }
+}
+
+//Coffee bag class
+class CoffeeBag{
+
+   //class constants 
+   private final double PRICE = 5.99;
+   private final double SALES_TAX = 0.0725;
+   
+   //data members
+   private double weight;
+   
+   //constructor that takes weight
+   
+   public CoffeeBag(double weightLbs){
+      weight = weightLbs;
+   }  
+   
+   //method that takes the number of bags to find total price with tax
+   public double findTotalPrice(int numBags){
+   
+      //first find total price
+      double totalPrice;
+      
+      totalPrice = weight * numBags * PRICE;
+      
+      //add tax and return
+      
+      return totalPrice + totalPrice * SALES_TAX;
+   }
+   
+   //methods that display private constants and data members
+   
+   public double getPrice(){
+   
+      return PRICE;
+   }
+   
+   public double getSalesTax(){
+   
+      return SALES_TAX;
+   }
+   
+   public double getWeight(){
+      
+      return weight;
+   }
+   
+}
+
+/* TESTING
+
+   Test 1 (Invalid data): 
+   
+   Input: adc
+   
+   Output: Exception in thread "main" java.util.InputMismatchException
+ 	at java.util.Scanner.throwFor(Scanner.java:864)
+ 	at java.util.Scanner.next(Scanner.java:1485)
+ 	at java.util.Scanner.nextDouble(Scanner.java:2413)
+ 	at Unit3ProjectPart2.main(Unit3ProjectPart2.java:31)
+
+      This is because the program expected a double, but recieved a String.
+      
+   Test 2 (Extreme data): 
+  
+   Input: 99999999 lbs, 99999999 bags
+   
+   Output: Number of bags sold: 99999999
+             Weight per bag: 99999999 lb
+            Price per pound: $5.99
+                  Sales tax: 7.25%
+ 
+                Total price: $64242748715145000
+                
+      -No problems, just some really large numbers.
+      
+   Test 3 (Normal data):
+   
+   Input: 5 lbs, 32 bags
+   
+   Output: Number of bags sold: 32
+             Weight per bag: 5 lb
+            Price per pound: $5.99
+                  Sales tax: 7.25%
+ 
+                Total price: $1027.88
+ 
+
+   -As expected. 
+*/
