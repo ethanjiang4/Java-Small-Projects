@@ -1,0 +1,102 @@
+//Name: Ethan Jiang
+//Date: Nov. 15. 16
+//Purpose: A program that takes input in Fahrenheit and returns output in Celsius.
+//Answer to question #7 on page 217
+//File Name: Unit3ProjectPart1 and Temp
+//Course: 12 AP CompSci
+
+import java.util.*;
+
+class Unit3ProjectPart1 {
+   
+   //main method for testing
+   
+   public static void main(String[] args){
+   
+      //use scanner
+      Scanner scanner = new Scanner (System.in);
+      
+      //variable to hold input 
+      double t;
+      
+      //declare objects
+      Temp temp = new Temp();
+         
+      //prompt user to enter input
+      System.out.println("Enter temperature in degrees Fahrenheit: ");
+      
+      t = scanner.nextDouble(); 
+      
+      //calls method to set celsius in Temp
+      temp.setFahrenheit(t);
+      
+      System.out.println("Your temperature in degrees Celsius is: "+ temp.toCelsius());
+      
+   }
+}
+
+class Temp {
+   
+   //data member
+   private double fahren;
+   
+   //sets input temperature in celsius
+   public void setCelsius(double input){
+   
+      //internally converts input to fahrenheit
+      fahren = 1.8 * input + 32;
+   }
+   
+   //sets input temperature in fahrenheit
+   public void setFahrenheit(double input){
+      
+      //remembers input and assigns it to value
+      fahren = input;
+   }
+   
+   //converts initial temperature to celsius
+   public double toCelsius(){
+      
+      //Outputs stored fahrenheit value that is converted to celsius
+      return (5.0/9.0) * (fahren - 32);
+   }
+   
+   //converts initial temperature to fahrenheit
+   public double toFahrenheit(){
+      
+      //Outputs stored fahrenheit value
+      return fahren;
+   }
+}
+
+/* TESTING
+
+   Test 1 (Invalid data):
+   
+   INPUT: abc
+   
+   OUTPUT: Exception in thread "main" java.util.InputMismatchException
+	at java.util.Scanner.throwFor(Scanner.java:864)
+	at java.util.Scanner.next(Scanner.java:1485)
+	at java.util.Scanner.nextDouble(Scanner.java:2413)
+	at Unit3ProjectPart1.main(Temperature.java:26)
+   
+   -This is because the program anticipated a double being entered, but got a string
+   
+ Test 2 (Extreme data):
+ 
+ INPUT: 99999999
+ 
+ OUTPUT: Your temperature in Celsius is: 5.5555537222222224E7
+ 
+ -No problems, just a really large number.
+ 
+ Test 3 (Normal data):
+ 
+ INPUT: 32
+ 
+ OUTPUT: Your temperature in Celsius is: 0.0
+ 
+ -Makes sense. 
+ 
+ */
