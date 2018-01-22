@@ -1,0 +1,56 @@
+import java.util.*;
+
+class Die10 {
+   //DATA MEMBERS
+   
+   //largest # on die
+   private static final int MAX_NUMBER = 9;
+   
+   //smallest # on die
+   private static final int MIN_NUMBER = 0;
+   
+   private int number;
+   
+   private Random random;
+   
+   
+   //CONSTRUCTORS
+   
+   public Die10(){
+      random = new Random();
+      roll();
+   }
+   
+   //METHODS
+   //rolls a random number from 1-10
+   private void roll(){
+      number = random.nextInt(MAX_NUMBER - MIN_NUMBER+1) + MIN_NUMBER;
+   }
+   //gets number rolled
+   public int getNumber(){
+      return number;
+   }
+   //rolls twice and adds digits together
+   public String getDoubleRoll(){
+      int num1, num2;
+      
+      roll();
+      num1 = getNumber();
+      roll();
+      num2 = getNumber();
+      
+      return "" + num1 + num2;
+   }
+   
+   //testing main method
+   public static void main(String[] args) {
+      
+      //make die
+      Die10 die = new Die10();
+      
+      //getting double roll
+      String roll = die.getDoubleRoll();
+      
+      System.out.println(roll);
+   }
+}
