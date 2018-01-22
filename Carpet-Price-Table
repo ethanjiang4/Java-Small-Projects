@@ -1,0 +1,40 @@
+import java.util.*;
+
+//Project for AP Computer Science
+//Formats a table.
+
+class CarpetPriceTable {
+   
+   public static void main(String[] args) {
+      
+      //initialize variables
+      final double PRICE_PER_SQ_M = 115.95;
+      double price, width = 1.0;
+      Formatter formatter = new Formatter(System.out); //create formatter
+      
+      formatter.format("%33s\n\n", "Carpet Prices"); // adds title
+      formatter.format("%6s", ""); //prints an empty cell
+      
+      for (int h = 1; h <= 10; h += 3)
+         formatter.format("%12d", h);
+         
+      System.out.println("\n\n"); //two new lines
+      
+      //prints data
+      for (int length = 2; length <= 20; length += 2) {
+         
+         formatter.format("%6d", length);
+         
+            for (int i = 1; i <=10; i += 3){
+         
+            price = length * i * PRICE_PER_SQ_M;
+         
+            formatter.format("%12.2f", price);
+          }
+         
+         System.out.print("\n");
+      }
+      
+      
+   }
+}
